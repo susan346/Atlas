@@ -1,7 +1,10 @@
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-   
+    id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.compose")
+}
 
 android {
     namespace = "com.projectatlas.app"
@@ -15,6 +18,7 @@ android {
         versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -42,10 +46,6 @@ android {
     buildFeatures {
         compose = true
     }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.15"
-    }
 }
 
 dependencies {
@@ -67,7 +67,9 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
-    // Coroutines & Coil
+    // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
+    // Coil
     implementation("io.coil-kt:coil-compose:2.7.0")
 }
